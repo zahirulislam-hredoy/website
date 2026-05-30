@@ -1,0 +1,228 @@
+================================================================
+WHITE DESIGN SOLUTIONS — DEPLOYMENT AUDIT REPORT
+================================================================
+Date: May 30, 2026
+Project: C:\Users\USER\Desktop\Final Website_WDS
+Goal: GitHub + Cloudflare Pages + Decap CMS
+================================================================
+
+FILE TREE SUMMARY
+================================================================
+
+Root (23 entries)
+├── index.html               (Home page)
+├── 138-east.html            (Static project page)
+├── ahmed-shah-apartment.html
+├── awr-hq-fitout.html
+├── busy-beans.html
+├── captains.html
+├── dar-al-sukoon.html
+├── ds-bistro.html
+├── kolis-dream.html
+├── nikkei.html
+├── portfolio.html           (Flipbook/gallery page)
+├── project.html             (Dynamic CMS-driven project detail)
+├── projects.html            (Full project listing)
+├── tarka.html
+├── uk-bangla-hq.html
+├── united-cafe.html
+├── yeakin-polimer-limited.html
+├── inquire.html             (Contact form)
+├── admin/
+│   ├── config.yml           (Decap CMS config)
+│   └── index.html           (Admin panel with Netlify Identity login)
+├── _projects/               (Empty - CMS content target)
+├── assets/
+│   ├── Logo.png
+│   ├── Hero.jpg
+│   ├── Interior.jpg
+│   ├── Residences.jpeg
+│   ├── interiors.dat        (PDF disguised as .dat)
+│   ├── portfolio.dat        (PDF disguised as .dat)
+│   ├── residences.dat       (PDF disguised as .dat)
+│   └── images/              (13 subfolders with images and PDFs)
+├── css/
+│   └── style.css
+└── js/
+    ├── main.js
+    └── animations.js
+
+================================================================
+CRITICAL ISSUES
+================================================================
+
+1. SPACES IN FOLDER/FILE NAMES
+   Location: assets/images/138 EAST/, AHMED SHAH APARTMENT/,
+             AWR DEVELOPMENTS HQ Fitout/, BUSY BEANS/,
+             Captains World/, Dar Al Sukoon_BY WHITE/,
+             D'S BISTRO/, Koli's Dream BY WHITE/,
+             UK BANGLA HQ/, united cafe/, Yeakin Polymer/
+   Problem:  Spaces must be URL-encoded as %20. Works locally but
+             fragile on Linux hosting. Cloudflare Pages (Linux) is
+             case-sensitive and URL-encodes spaces, which can cause
+             404s if a link uses %20 but the file has a literal space.
+   Fix:      Rename all folders to use hyphens:
+             138-east/, ahmed-shah-apartment/,
+             awr-developments-hq-fitout/, etc.
+             Then update all HTML references.
+
+2. APOSTROPHES IN FOLDER NAMES
+   Location: D'S BISTRO/, Koli's Dream BY WHITE/
+   Problem:  Apostrophe is not a safe URL character. Must be encoded
+             as %27. Will cause issues with tools and some CDN caches.
+   Fix:      Rename to ds-bistro/, kolis-dream-by-white/
+             and update HTML refs.
+
+3. PARENTHESES IN FILENAMES
+   Location: assets/images/UK BANGLA HQ/COVER (2).jpg
+   Problem:  Parentheses are technically allowed but fragile in URLs
+             and can break shell scripts, git operations, and some
+             CDN edge cases.
+   Fix:      Rename to COVER-2.jpg or cover.jpg (the primary cover)
+
+4. ADMIN PANEL USES NETLIFY IDENTITY - INCOMPATIBLE WITH CLOUDFLARE
+   Location: admin/index.html lines 12-32
+   Problem:  Loads netlify-identity-widget.js and requires a Netlify
+             shadow subdomain. Cloudflare Pages does not provide
+             Netlify Identity or Git Gateway. Decap CMS will not
+             authenticate on Cloudflare Pages with this setup.
+   Fix:      Replace with GitHub OAuth flow or use "simple"
+             authentication. See Decap CMS GitHub backend docs.
+
+5. ADMIN CONFIG REPO MISMATCH
+   Location: admin/config.yml:3
+   Problem:  repo: zahirulislam-hredoy/website - must match the
+             actual repo you create.
+   Fix:      Update repo to your actual GitHub repo,
+             e.g., your-username/your-repo.
+
+6. _PROJECTS/ DIRECTORY IS EMPTY
+   Location: _projects/
+   Problem:  project.html fetches _projects/{slug}.md from the
+             browser. With zero files, every dynamic project page
+             will show "Project Not Found".
+   Fix:      Either create initial .md files, or link to the static
+             .html project pages instead of project.html?p=...
+
+7. STATIC HTML + CMS-DRIVEN DYNAMIC PAGE COEXIST
+   Location: 138-east.html, kolis-dream.html, etc. vs.
+             project.html?p=...
+   Problem:  projects.html links to project.html?p=kolis-dream
+             (CMS dynamic), but there's also kolis-dream.html
+             (static). They will show different content.
+   Fix:      Choose one approach: (a) use only static HTML pages
+             and remove CMS, or (b) use only CMS-driven
+             project.html and delete the 13 static project
+             HTML files.
+
+8. PDFs WITH .dat EXTENSION
+   Location: assets/interiors.dat, portfolio.dat, residences.dat
+   Problem:  Hex bytes start with %PDF - these are PDFs mislabeled
+             as .dat. The portfolio flipbook loads them as PDFs
+             successfully, but the extension is misleading and may
+             cause MIME-type issues.
+   Fix:      Rename to .pdf and update main.js references
+             (lines 134-138).
+
+================================================================
+WARNING ISSUES
+================================================================
+
+1. MIXED CASE IN FOLDER NAMES
+   Various assets/images/ subfolders. Some uppercase (NIKKEI),
+   some Title Case (Captains World), some lowercase (tarka).
+   Cloudflare Pages is case-sensitive, so the HTML ref must
+   exactly match the actual folder casing (it does currently,
+   but fragile).
+
+2. NO 404.HTML
+   Cloudflare Pages supports custom 404 pages. Without one,
+   visitors get a generic Cloudflare error page on broken links.
+
+3. NO .GITIGNORE
+   When you git init and push, OS files (Thumbs.db, .DS_Store)
+   and editor junk may leak into the repo.
+
+4. PDFs INSIDE assets/images/
+   assets/images/UK BANGLA HQ/PLAN/UK BANGLA PLAN.pdf,
+   assets/images/Yeakin Polymer/PLAN/ypl plan.pdf
+   Storing PDF documents inside an images/ folder is messy.
+   Consider assets/documents/.
+
+5. project.html DOUBLE-LOADS animations.js
+   project.html:265 - animations.js is loaded dynamically after
+   the markdown fetch but GSAP CDN scripts are included directly.
+   If GSAP's CDN fails, the dynamic load may error silently.
+
+6. FORM HAS NO SERVER ENDPOINT
+   inquire.html - The contact form displays success client-side
+   but never sends data anywhere. There's no Netlify Forms
+   attribute (netlify) or external API call. Submissions are lost.
+
+7. NO SITEMAP.XML OR ROBOTS.TXT
+   Not required but recommended for SEO after deployment.
+
+8. CMS SLUG VS. URL PARAM NAMING MAY DIVERGE
+   admin/config.yml:14 vs. project.html:251 - CMS uses {{slug}}
+   (defaults to title in lowercase with spaces->hyphens). Static
+   HTML pages use kebab-case IDs like kolis-dream. These should
+   match, but CMS slugs could differ from expected params.
+
+================================================================
+SAFE ITEMS
+================================================================
+
+- index.html structure: Clean, all CSS/JS paths resolve correctly
+- css/style.css: Well-formed, no broken url() references
+- js/main.js: Valid JS, no broken fetch URLs
+- js/animations.js: Valid GSAP/Lenis animations, properly guarded
+- All image paths in HTML files: Match actual files
+  (casing, spelling, extension)
+- admin/config.yml YAML syntax: Valid - no syntax errors
+- HTTPS CDN links: All Google Fonts, GSAP, Lenis, PDF.js use HTTPS
+- No node_modules, .env, or build artifacts: Project is clean for git
+- Netlify Identity snippet in index.html: Will silently no-op on
+  Cloudflare Pages (no breakage)
+
+================================================================
+EXACT FIXES NEEDED
+================================================================
+
+REQUIRED BEFORE PUSH:
+1. Rename all folder/files with spaces to hyphens (13 folders, ~70 files)
+2. Rename folders with apostrophes
+   (D'S BISTRO -> ds-bistro, Koli's Dream BY WHITE -> kolis-dream-by-white)
+3. Rename COVER (2).jpg -> COVER-2.jpg
+4. Delete either the 13 static HTML project pages or the project.html
+   dynamic approach - pick one
+5. Re-configure admin/config.yml with your real GitHub repo
+6. Replace admin/index.html Netlify Identity auth with GitHub OAuth
+   or "simple" auth for Cloudflare Pages
+7. Rename .dat files -> .pdf (or keep but add explicit MIME type
+   config in Cloudflare)
+
+RECOMMENDED BEFORE PUSH:
+1. Create 404.html at root
+2. Create .gitignore with *.log, .DS_Store, Thumbs.db
+3. Either seed _projects/ with initial .md content or remove the
+   dynamic approach
+4. Either add Netlify Forms attribute to inquire.html or hook up
+   a form service (Formspree, Web3Forms, etc.)
+5. Add sitemap.xml / robots.txt
+
+================================================================
+FINAL READINESS STATUS: NOT READY
+================================================================
+
+The site will deploy as static files on Cloudflare Pages, but:
+- CMS authentication will not work (Netlify Identity not available)
+- Image paths with spaces may break on some edge cases
+- Dual content system (static pages + CMS dynamic) will confuse users
+- No content exists in _projects/ for the dynamic page to load
+
+After the critical fixes above (especially #1, #4, #6), the site
+will be ready for a clean GitHub push.
+
+================================================================
+END OF REPORT
+================================================================

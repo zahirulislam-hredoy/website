@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selected Works — WHITE Design Solutions</title>
+  <meta name="description" content="Explore the comprehensive portfolio of WHITE Design Solutions, showcasing architectural permanence and premium corporate interiors." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .projects-header-section {
+      padding-top: 140px;
+      padding-bottom: var(--space-lg);
+    }
+    .filter-bar {
+      display: flex;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+      border-bottom: 1px solid var(--color-outline-variant);
+      padding-bottom: var(--space-sm);
+    }
+    .filter-btn {
+      background: transparent !important;
+      border: none !important;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-on-surface-variant) !important;
+      cursor: pointer;
+      padding: var(--space-xs) 0 !important;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+    .filter-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-on-surface);
+      transition: width var(--transition-fast);
+    }
+    .filter-btn:hover {
+      color: var(--color-on-surface) !important;
+    }
+    .filter-btn.active {
+      background: transparent !important;
+      border: none !important;
+      color: var(--color-on-surface) !important;
+    }
+    .filter-btn.active::after {
+      width: 100%;
+    }
+    .projects-grid-all {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: var(--space-gutter);
+      margin-bottom: var(--space-xl);
+    }
+    .project-card-all {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--color-outline-variant);
+      background: var(--color-surface-container-low);
+      overflow: hidden;
+      transition: all var(--transition-medium);
+    }
+    .project-card-all__image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .project-card-all__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-medium);
+    }
+    .project-card-all:hover {
+      border-color: var(--color-outline);
+      background: var(--color-surface-container);
+    }
+    .project-card-all:hover .project-card-all__image {
+      transform: scale(1.03);
+    }
+    .project-card-all__meta {
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .project-card-all__title {
+      margin-bottom: var(--space-xs);
+      transition: color var(--transition-fast);
+    }
+    .project-card-all__category {
+      color: var(--color-on-surface-variant);
+    }
+    @media (max-width: 768px) {
+      .projects-grid-all {
+        grid-template-columns: 1fr;
+      }
+      .filter-bar {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: var(--space-xs);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <img src="assets/Logo.png" alt="WHITE" class="navbar__logo" />
+      </a>
+
+      <div class="navbar__links">
+        <a href="projects.html#residential">Residences</a>
+        <a href="projects.html#interior">Interiors</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="index.html#philosophy">Material Study</a>
+        <a href="inquire.html">Contact</a>
+      </div>
+
+      <a href="inquire.html" class="navbar__cta">Inquire</a>
+
+      <button class="navbar__toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="projects.html#residential">Residences</a>
+    <a href="projects.html#interior">Interiors</a>
+    <a href="projects.html">Projects</a>
+    <a href="index.html#philosophy">Material Study</a>
+    <a href="inquire.html">Contact</a>
+  </div>
+
+  <main class="container">
+    <!-- ── Header Section ── -->
+    <section class="projects-header-section reveal">
+      <h1 class="heading-lg">Selected Works</h1>
+      <p class="body-lg" style="margin-bottom: var(--space-md);">
+        A comprehensive collection of architecture and corporate workspace interiors crafted for permanence.
+      </p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterProjects('all')">All Works</button>
+        <button class="filter-btn" onclick="filterProjects('residential')">Residential</button>
+        <button class="filter-btn" onclick="filterProjects('interior')">Interior Fitout</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid-all">
+        <!-- Project 1 -->
+<article class="project-card-all reveal" data-category="residential" onclick="window.location.href='project.html?p=kolis-dream'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/Koli's Dream BY WHITE/cover.jpg" alt="Koli's Dream BY WHITE" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">Koli's Dream BY WHITE</h3>
+              <p class="project-card-all__category label-caps">Residential / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+<article class="project-card-all reveal" data-category="residential" onclick="window.location.href='project.html?p=dar-al-sukoon'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/Dar Al Sukoon_BY WHITE/Cover.jpg" alt="Dar Al Sukoon BY WHITE" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">Dar Al Sukoon BY WHITE</h3>
+              <p class="project-card-all__category label-caps">Residential / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+<article class="project-card-all reveal" data-category="interior" onclick="window.location.href='project.html?p=awr-hq-fitout'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/AWR DEVELOPMENTS HQ Fitout/COVER.jpg" alt="AWR DEVELOPMENTS HQ Fitout" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">AWR DEVELOPMENTS HQ Fitout</h3>
+              <p class="project-card-all__category label-caps">Interior / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+<article class="project-card-all reveal" data-category="residential" onclick="window.location.href='project.html?p=138-east'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/138 EAST/COVER 1.jpg" alt="138 EAST" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">138 EAST</h3>
+              <p class="project-card-all__category label-caps">Residential / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+<article class="project-card-all reveal" data-category="residential" onclick="window.location.href='project.html?p=ahmed-shah-apartment'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/AHMED SHAH APARTMENT/COVER.jpg" alt="Ahmed Shah Apartment" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">AHMED SHAH APARTMENT</h3>
+              <p class="project-card-all__category label-caps">Residential / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+<article class="project-card-all reveal" data-category="interior" onclick="window.location.href='project.html?p=busy-beans'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/BUSY BEANS/COVER.jpg" alt="Busy Beans" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">BUSY BEANS</h3>
+              <p class="project-card-all__category label-caps">Interior / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 7 -->
+<article class="project-card-all reveal" data-category="interior" onclick="window.location.href='project.html?p=ds-bistro'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/D'S BISTRO/COVER.jpg" alt="D'S Bistro" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">D'S BISTRO</h3>
+              <p class="project-card-all__category label-caps">Interior / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 8 -->
+<article class="project-card-all reveal" data-category="interior" onclick="window.location.href='project.html?p=nikkei'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/NIKKEI/COVER.jpg" alt="Nikkei" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">NIKKEI</h3>
+              <p class="project-card-all__category label-caps">Interior / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 9 -->
+<article class="project-card-all reveal" data-category="residential" onclick="window.location.href='project.html?p=yeakin-polimer-limited'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/Yeakin Polymer/COVER.jpg" alt="Yeakin Polimer Limited" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">Yeakin Polimer Limited</h3>
+              <p class="project-card-all__category label-caps">Residential / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 10 -->
+<article class="project-card-all reveal" data-category="interior" onclick="window.location.href='project.html?p=captains'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/Captains World/Cover.jpg" alt="Captain's World Interior Fitout" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">Captain's World Interior Fitout</h3>
+              <p class="project-card-all__category label-caps">Interior Fitout / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 11 -->
+<article class="project-card-all reveal" data-category="interior" onclick="window.location.href='project.html?p=tarka'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/tarka/cover.jpg" alt="Tarka Restaurant" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">Tarka</h3>
+              <p class="project-card-all__category label-caps">Interior / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 12 -->
+<article class="project-card-all reveal" data-category="interior" onclick="window.location.href='project.html?p=united-cafe'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/united cafe/cover.jpg" alt="United Cafe" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">United Cafe</h3>
+              <p class="project-card-all__category label-caps">Interior / 2024</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 13 -->
+<article class="project-card-all reveal" data-category="interior" onclick="window.location.href='project.html?p=uk-bangla-hq'">
+          <div class="project-card-all__image-wrapper">
+            <img src="assets/images/UK BANGLA HQ/COVER (2).jpg" alt="UK Bangla HQ" class="project-card-all__image" loading="lazy" />
+          </div>
+          <div class="project-card-all__meta">
+            <div>
+              <h3 class="project-card-all__title heading-md">UK BANGLA HQ</h3>
+              <p class="project-card-all__category label-caps">Interior / 2024</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <div>
+          <div class="footer__brand-title">WHITE</div>
+          <p class="footer__brand-text body-md">
+            Built for Permanence.
+          </p>
+        </div>
+        <p class="footer__copyright">
+          &copy; 2024 WHITE Design Solutions.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="footer__links">
+        <div class="footer__column">
+          <h4 class="footer__column-title">Index</h4>
+          <a href="index.html">Home</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="projects.html">All Projects</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    function filterProjects(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      
+      const activeBtn = document.querySelector(`.filter-btn[onclick*="'${category}'"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+
+      // Update the URL hash dynamically and cleanly
+      if (category === 'all') {
+        if (window.location.hash) {
+          history.replaceState(null, null, ' ');
+        }
+      } else {
+        history.replaceState(null, null, `#${category}`);
+      }
+
+      const cards = document.querySelectorAll('.project-card-all');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+          if (!card.classList.contains('visible')) {
+            card.classList.add('visible');
+          }
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function handleHashFilter() {
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'residential' || hash === 'interior') {
+        filterProjects(hash);
+      } else {
+        filterProjects('all');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      handleHashFilter();
+    });
+
+    window.addEventListener('hashchange', () => {
+      handleHashFilter();
+    });
+  </script>
+</body>
+</html>

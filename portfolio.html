@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Portfolio — WHITE Design Solutions</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <img src="assets/Logo.png" alt="WHITE" class="navbar__logo" />
+      </a>
+
+      <div class="navbar__links">
+        <a href="projects.html#residential">Residences</a>
+        <a href="projects.html#interior">Interiors</a>
+        <a href="projects.html">Projects</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+      </div>
+
+      <a href="inquire.html" class="navbar__cta">Inquire</a>
+
+      <button class="navbar__toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="projects.html#residential">Residences</a>
+    <a href="projects.html#interior">Interiors</a>
+    <a href="projects.html">Projects</a>
+    <a href="portfolio.html">Portfolio</a>
+  </div>
+
+  <main style="padding-top: 100px; min-height: 80vh;">
+    <!-- ── Company Portfolio Flipbook ── -->
+    <section class="portfolio-flipbook-section section-padding container" id="company-portfolio">
+      <div class="section-header reveal">
+        <h1 class="heading-lg">Company Portfolio</h1>
+        <p class="body-lg">Explore our defining projects and philosophy.</p>
+      </div>
+      <div class="portfolio-filters reveal">
+        <button class="filter-btn active" data-category="all">All Projects</button>
+        <button class="filter-btn" data-category="residences">Residences</button>
+        <button class="filter-btn" data-category="interiors">Interiors</button>
+      </div>
+      <div class="flipbook-container reveal" id="flipbook-container">
+        <div id="flipbook" class="flipbook">
+          <!-- PDF pages will be injected here as canvases -->
+        </div>
+        <div class="flipbook-controls">
+          <button id="btn-prev" class="btn btn--ghost">&larr; Prev</button>
+          <span class="page-info">Page <span id="page-current">1</span> of <span id="page-total">-</span></span>
+          <button id="btn-next" class="btn btn--ghost">Next &rarr;</button>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <div>
+          <div class="footer__brand-title">WHITE</div>
+          <p class="footer__brand-text body-md">
+            Initiate a dialogue regarding your next architectural endeavor.
+          </p>
+          <a href="inquire.html" class="btn btn--primary">Contact Firm</a>
+        </div>
+        <p class="footer__copyright">
+          &copy; 2024 WHITE Design Solutions. Built for Permanence.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="footer__links">
+        <div class="footer__column">
+          <h4 class="footer__column-title">Index</h4>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="projects.html#residential">Residences</a>
+          <a href="projects.html#interior">Interiors</a>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__column-title">Firm</h4>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__column-title">Information</h4>
+          <a href="#">Legal</a>
+          <a href="#">Sustainability</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+  <script src="js/main.js?v=3"></script>
+</body>
+</html>

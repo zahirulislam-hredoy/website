@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: zahirulislam-hredoy/website
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "_projects"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Client Name", name: "client", widget: "string" }
+      - { label: "Project Location", name: "location", widget: "string" }
+      - { label: "Completion Year", name: "year", widget: "string" }
+      - { label: "Project Type Label", name: "type_label", widget: "string" }
+      - { label: "Hero Cover Image", name: "featured_image", widget: "image" }
+      - { label: "Project Description", name: "body", widget: "markdown" }
+      - { label: "Project Gallery", name: "project_gallery", widget: "list", fields: [{ label: "Image", name: "image", widget: "image" }] }
+      - { label: "Technical Plans & Blueprints", name: "technical_document", widget: "image", required: false }

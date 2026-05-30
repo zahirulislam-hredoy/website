@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Details — WHITE Design Solutions</title>
+  <meta name="description" content="Precision engineering meets sophisticated design. Explore our bespoke architectural portfolios." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .project-header {
+      padding-top: var(--space-xl);
+      padding-bottom: var(--space-lg);
+    }
+    .project-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      border-top: 1px solid var(--color-outline-variant);
+      padding-top: var(--space-md);
+    }
+    .info-item__label {
+      display: block;
+      margin-bottom: var(--space-xs);
+      color: var(--color-on-surface-variant);
+    }
+    .info-item__value {
+      font-weight: 600;
+    }
+    .project-description {
+      margin-bottom: var(--space-xl);
+    }
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-gutter);
+      margin-bottom: var(--space-xl);
+    }
+    .gallery-item {
+      overflow: hidden;
+      border: 1px solid var(--color-outline-variant);
+      aspect-ratio: 16 / 9;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-medium);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.02);
+    }
+    .gallery-item--full {
+      grid-column: span 2;
+      aspect-ratio: 21 / 9;
+    }
+    .technical-section {
+      margin-bottom: var(--space-xl);
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-gutter);
+    }
+    .plan-card {
+      border: 1px solid var(--color-outline-variant);
+      padding: var(--space-md);
+      background: var(--color-surface-container-low);
+      transition: all var(--transition-fast);
+    }
+    .plan-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: var(--space-sm);
+      filter: grayscale(100%) contrast(1.2);
+      transition: all var(--transition-fast);
+    }
+    .plan-card:hover {
+      background: var(--color-surface-container);
+    }
+    .plan-card:hover img {
+      filter: grayscale(0%) contrast(1);
+    }
+    @media (max-width: 768px) {
+      .project-gallery {
+        grid-template-columns: 1fr;
+      }
+      .gallery-item--full {
+        grid-column: span 1;
+        aspect-ratio: 16 / 9;
+      }
+    }
+  </style>
+  <script>
+    document.documentElement.classList.add('gsap-loading');
+    setTimeout(function() {
+      document.documentElement.classList.remove('gsap-loading');
+    }, 1500);
+  </script>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <img src="assets/Logo.png" alt="WHITE" class="navbar__logo" />
+      </a>
+
+      <div class="navbar__links">
+        <a href="projects.html#residential">Residences</a>
+        <a href="projects.html#interior">Interiors</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="index.html#philosophy">Material Study</a>
+        <a href="inquire.html">Contact</a>
+      </div>
+
+      <a href="inquire.html" class="navbar__cta">Inquire</a>
+
+      <button class="navbar__toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="projects.html#residential">Residences</a>
+    <a href="projects.html#interior">Interiors</a>
+    <a href="projects.html">Projects</a>
+    <a href="index.html#philosophy">Material Study</a>
+    <a href="inquire.html">Contact</a>
+  </div>
+
+  <!-- ── Hero Section ── -->
+  <header class="hero" id="home">
+    <img
+      src="assets/images/Residences.jpeg"
+      alt="Project Cover View"
+      class="hero__bg"
+      style="object-position: center; opacity: 1; filter: none; top: 0; height: 100%;"
+    />
+    <div class="hero__overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)); top: 0; height: 100%;"></div>
+    <div class="hero__content reveal">
+      <span class="label-caps project-type-label" style="color: #fff; margin-bottom: 1rem; display: block;">Structural Design</span>
+      <h1 class="hero__title heading-display">
+        Project<br />BY WHITE
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ── Project Info ── -->
+    <section class="project-header reveal">
+      <div class="project-info">
+        <div class="info-item">
+          <span class="info-item__label label-caps">Location</span>
+          <span class="info-item__value info-location">Loading...</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item__label label-caps">Client</span>
+          <span class="info-item__value info-client">Loading...</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item__label label-caps">Year</span>
+          <span class="info-item__value info-year">Loading...</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item__label label-caps">Type</span>
+          <span class="info-item__value info-type">Loading...</span>
+        </div>
+      </div>
+
+      <div class="project-description">
+        <p class="body-lg project-description-text">
+          Loading project description...
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Gallery Grid ── -->
+    <section class="project-gallery">
+      <!-- Injected Dynamically -->
+    </section>
+
+    <!-- ── Technical Section / Plans ── -->
+    <section class="technical-section reveal" style="display: none;">
+      <div class="section-header">
+        <h2 class="heading-lg">Technical Documents & Plans</h2>
+      </div>
+      <div class="plans-grid">
+        <!-- Injected Dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ── CTA Section ── -->
+  <section class="cta-section container" id="contact">
+    <div class="cta-box reveal">
+      <h2 class="cta-box__title heading-lg">Inquire About This Design</h2>
+      <p class="cta-box__text body-lg">
+        Connect with our design team to discuss structural permanence and spatial clarity.
+      </p>
+      <a href="inquire.html" class="btn btn--primary">Contact Design Studio</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div>
+          <div class="footer__brand-title">WHITE</div>
+          <p class="footer__brand-text body-md">
+            Built for Permanence.
+          </p>
+        </div>
+        <p class="footer__copyright">
+          &copy; 2024 WHITE Design Solutions.
+        </p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__column">
+          <h4 class="footer__column-title">Index</h4>
+          <a href="index.html">Home</a>
+          <a href="portfolio.html">Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+  
+  <!-- Dynamic Loader Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get('p') || 'kolis-dream'; // Default fallback project
+
+      // Fetch the project markdown file
+      fetch(`_projects/${projectId}.md`)
+        .then(response => {
+          if (!response.ok) throw new Error('Project not found');
+          return response.text();
+        })
+        .then(data => {
+          const { attributes, body } = parseFrontMatter(data);
+          renderProject(attributes, body);
+
+          // Dynamically load animations.js once rendering is complete
+          const animScript = document.createElement('script');
+          animScript.src = "js/animations.js";
+          document.body.appendChild(animScript);
+        })
+        .catch(error => {
+          console.error('Error loading project content:', error);
+          document.querySelector('main').innerHTML = `
+            <div style="text-align: center; padding: 100px 20px;">
+              <h2 class="heading-lg" style="margin-bottom: 20px;">Project Not Found</h2>
+              <p class="body-lg" style="margin-bottom: 30px;">The requested project record could not be loaded.</p>
+              <a href="projects.html" class="btn btn--primary" style="display:inline-flex; max-width:260px;">Return to Projects</a>
+            </div>
+          `;
+          document.documentElement.classList.remove('gsap-loading');
+        });
+    });
+
+    /**
+     * Regex-based YAML parser (vanilla, lightweight)
+     */
+    function parseFrontMatter(mdContent) {
+      const fmRegex = /^---([\s\S]*?)---/;
+      const match = mdContent.match(fmRegex);
+      if (!match) return { attributes: {}, body: mdContent };
+
+      const fmText = match[1];
+      const body = mdContent.replace(fmRegex, '').trim();
+
+      const attributes = {};
+      const lines = fmText.split('\n');
+      let currentKey = null;
+      let currentList = null;
+
+      lines.forEach(line => {
+        line = line.trim();
+        if (!line) return;
+
+        if (line.startsWith('-') && currentList) {
+          const val = line.substring(1).trim().replace(/^["']|["']$/g, '');
+          currentList.push(val);
+          return;
+        }
+
+        const colonIndex = line.indexOf(':');
+        if (colonIndex > -1) {
+          const key = line.substring(0, colonIndex).trim();
+          let val = line.substring(colonIndex + 1).trim();
+
+          if (!val) {
+            currentKey = key;
+            currentList = [];
+            attributes[key] = currentList;
+          } else {
+            val = val.replace(/^["']|["']$/g, '');
+            attributes[key] = val;
+            currentKey = null;
+            currentList = null;
+          }
+        }
+      });
+
+      return { attributes, body };
+    }
+
+    /**
+     * Inject metadata into DOM targets
+     */
+    function renderProject(meta, description) {
+      document.title = `${meta.title} — WHITE Design Solutions`;
+      
+      const heroBg = document.querySelector('.hero__bg');
+      if (heroBg && meta.featured_image) heroBg.src = meta.featured_image;
+
+      const heroTitle = document.querySelector('.hero__title');
+      if (heroTitle && meta.title) heroTitle.innerHTML = meta.title.replace(' BY ', '<br>BY ');
+
+      const projectType = document.querySelector('.project-type-label');
+      if (projectType && meta.type_label) projectType.textContent = meta.type_label;
+
+      const loc = document.querySelector('.info-location');
+      if (loc && meta.location) loc.textContent = meta.location;
+
+      const client = document.querySelector('.info-client');
+      if (client && meta.client) client.textContent = meta.client;
+
+      const year = document.querySelector('.info-year');
+      if (year && meta.year) year.textContent = meta.year;
+
+      const type = document.querySelector('.info-type');
+      if (type && meta.type_label) type.textContent = meta.type_label;
+
+      const desc = document.querySelector('.project-description-text');
+      if (desc && description) desc.textContent = description;
+
+      // Project Gallery grid
+      const galleryContainer = document.querySelector('.project-gallery');
+      if (galleryContainer && meta.project_gallery && meta.project_gallery.length > 0) {
+        galleryContainer.innerHTML = '';
+        meta.project_gallery.forEach((item, idx) => {
+          const imgSrc = typeof item === 'string' ? item : item.image;
+          const isFull = idx % 3 === 0;
+          const itemDiv = document.createElement('div');
+          itemDiv.className = `gallery-item ${isFull ? 'gallery-item--full' : ''} reveal`;
+          itemDiv.innerHTML = `<img src="${imgSrc}" alt="Project View ${idx + 1}" loading="lazy">`;
+          galleryContainer.appendChild(itemDiv);
+        });
+      }
+
+      // Blueprints card
+      const blueprintSection = document.querySelector('.technical-section');
+      const blueprintContainer = document.querySelector('.plans-grid');
+      if (blueprintContainer && blueprintSection) {
+        if (meta.technical_document) {
+          blueprintSection.style.display = 'block';
+          blueprintContainer.innerHTML = `
+            <div class="plan-card reveal">
+              <img src="${meta.technical_document}" alt="Technical Blueprint">
+              <h3 class="heading-md">Structural Blueprint</h3>
+              <p class="body-md">Symmetric plan details and construction layout references.</p>
+            </div>
+          `;
+        } else {
+          blueprintSection.style.display = 'none';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

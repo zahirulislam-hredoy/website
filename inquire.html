@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inquire — WHITE Design Solutions</title>
+  <meta name="description"
+    content="Start a project with WHITE Design Solutions. Tell us about your vision and our team will contact you within 24–48 hours for a free 15-minute consultation." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── Page Hero ── */
+    .inquire-hero {
+      background-color: var(--color-primary);
+      padding-top: calc(88px + var(--space-xl));
+      padding-bottom: var(--space-xl);
+    }
+
+    .inquire-hero__label {
+      color: var(--color-on-primary-container);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+
+    .inquire-hero__title {
+      color: var(--color-on-primary);
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+    }
+
+    .inquire-hero__text {
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 560px;
+    }
+
+    /* ── Main Layout ── */
+    .inquire-body {
+      background-color: var(--color-background);
+      padding-top: var(--space-xl);
+      padding-bottom: var(--space-xl);
+    }
+
+    .inquire-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--space-gutter);
+    }
+
+    /* ── Form ── */
+    .inquire-form-wrap {
+      width: 100%;
+    }
+
+    .form-section-title {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-on-surface-variant);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid var(--color-outline);
+      margin-bottom: var(--space-md);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-on-surface-variant);
+    }
+
+    .form-field label span.opt {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--color-outline);
+      margin-left: 4px;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      background-color: var(--color-surface-container-low);
+      border: 1px solid var(--color-outline-variant);
+      color: var(--color-on-surface);
+      font-family: var(--font-body);
+      font-size: 15px;
+      padding: 14px var(--space-sm);
+      outline: none;
+      transition: border-color var(--transition-fast), background-color var(--transition-fast);
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--color-primary);
+      background-color: var(--color-surface-container-lowest);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: var(--color-outline);
+      font-style: italic;
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23747878' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .form-field--half {
+      grid-column: span 1;
+    }
+
+    /* File upload */
+    .file-upload {
+      border: 1px dashed var(--color-outline);
+      padding: var(--space-md);
+      text-align: center;
+      cursor: pointer;
+      transition: border-color var(--transition-fast), background-color var(--transition-fast);
+      position: relative;
+    }
+
+    .file-upload:hover {
+      border-color: var(--color-primary);
+      background-color: var(--color-surface-container-low);
+    }
+
+    .file-upload input[type="file"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      background: none;
+    }
+
+    .file-upload__icon {
+      width: 24px;
+      height: 24px;
+      margin: 0 auto var(--space-xs);
+      color: var(--color-outline);
+    }
+
+    .file-upload__label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--color-on-surface-variant);
+    }
+
+    .file-upload__sub {
+      font-size: 11px;
+      color: var(--color-outline);
+      margin-top: 4px;
+    }
+
+    /* Error state */
+    .form-field input.error,
+    .form-field select.error,
+    .form-field textarea.error {
+      border-color: var(--color-error);
+    }
+
+    .form-error-msg {
+      font-size: 11px;
+      color: var(--color-error);
+      display: none;
+    }
+
+    .form-field.has-error .form-error-msg {
+      display: block;
+    }
+
+    /* CTA row */
+    .form-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .form-microcopy {
+      font-size: 12px;
+      color: var(--color-on-surface-variant);
+      line-height: 1.5;
+    }
+
+    /* Success state */
+    .success-panel {
+      display: none;
+      border: 1px solid var(--color-primary);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+    }
+
+    .success-panel.visible {
+      display: block;
+    }
+
+    .success-panel__icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto var(--space-md);
+      color: var(--color-primary);
+    }
+
+    .success-panel__title {
+      color: var(--color-primary);
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+
+    .success-panel__text {
+      color: var(--color-on-surface-variant);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Sidebar ── */
+    .inquire-sidebar {
+      width: 100%;
+    }
+
+    .sidebar-block {
+      border-top: 1px solid var(--color-outline);
+      padding-top: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    .sidebar-block__label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-outline);
+      margin-bottom: var(--space-xs);
+    }
+
+    .sidebar-block__value {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-on-surface);
+      line-height: 1.5;
+    }
+
+    .sidebar-block__value a {
+      color: var(--color-on-surface);
+      transition: color var(--transition-fast);
+    }
+
+    .sidebar-block__value a:hover {
+      color: var(--color-primary);
+    }
+
+    .sidebar-hours {
+      font-size: 12px;
+      color: var(--color-on-surface-variant);
+      margin-top: 4px;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background-color: var(--color-outline-variant);
+      margin: var(--space-lg) 0;
+    }
+
+    /* ── Responsive ── */
+    @media (min-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .form-field--full {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .inquire-grid {
+        grid-template-columns: 7fr 3fr;
+        align-items: start;
+      }
+
+      .form-cta {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <img src="assets/Logo.png" alt="WHITE" class="navbar__logo" />
+      </a>
+
+      <div class="navbar__links">
+        <a href="projects.html#residential">Residences</a>
+        <a href="projects.html#interior">Interiors</a>
+        <a href="projects.html">Projects</a>
+        <a href="index.html#philosophy">Material Study</a>
+        <a href="inquire.html" class="active">Contact</a>
+      </div>
+
+      <a href="inquire.html" class="navbar__cta">Inquire</a>
+
+      <button class="navbar__toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <a href="projects.html#residential">Residences</a>
+    <a href="projects.html#interior">Interiors</a>
+    <a href="projects.html">Projects</a>
+    <a href="index.html#philosophy">Material Study</a>
+    <a href="inquire.html">Contact</a>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="inquire-hero">
+    <div class="container">
+      <span class="inquire-hero__label label-caps reveal">WHITE Design Solutions</span>
+      <h1 class="inquire-hero__title heading-display reveal">Start a Project</h1>
+      <p class="inquire-hero__text body-lg reveal">Tell us the basics and our team will contact you within 24–48 hours.</p>
+    </div>
+  </section>
+
+  <!-- ── Body ── -->
+  <section class="inquire-body">
+    <div class="inquire-grid">
+
+      <!-- Form Column -->
+      <div class="inquire-form-wrap reveal">
+
+        <!-- Success Panel (hidden until submit) -->
+        <div class="success-panel" id="success-panel" role="alert" aria-live="polite">
+          <svg class="success-panel__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+          <h2 class="success-panel__title heading-md" id="success-name-msg">Request Received</h2>
+          <p class="success-panel__text body-md" id="success-body">
+            We received your request. Our team will contact you within 24–48 hours to schedule a free 15-minute call and
+            discuss next steps. If urgent, call <strong>+88 01XXXXXXXXX</strong>.
+          </p>
+        </div>
+
+        <form id="inquire-form" novalidate>
+
+          <!-- 01 — Contact Details -->
+          <p class="form-section-title">01 — Contact Details</p>
+          <div class="form-grid">
+
+            <div class="form-field form-field--half" id="field-name">
+              <label for="inp-name">Full Name <span class="opt">*</span></label>
+              <input type="text" id="inp-name" name="name" autocomplete="name" placeholder="Your full name" required />
+              <span class="form-error-msg">Please enter your name.</span>
+            </div>
+
+            <div class="form-field form-field--half" id="field-email">
+              <label for="inp-email">Email Address <span class="opt">*</span></label>
+              <input type="email" id="inp-email" name="email" autocomplete="email" placeholder="you@example.com"
+                required />
+              <span class="form-error-msg">Please enter a valid email.</span>
+            </div>
+
+            <div class="form-field form-field--half" id="field-phone">
+              <label for="inp-phone">Phone <span class="opt">Optional</span></label>
+              <input type="tel" id="inp-phone" name="phone" autocomplete="tel" placeholder="+88 01XXXXXXXXX" />
+            </div>
+
+            <div class="form-field form-field--half" id="field-project-type">
+              <label for="inp-type">Project Type <span class="opt">*</span></label>
+              <select id="inp-type" name="project_type" required>
+                <option value="" disabled selected>Select type…</option>
+                <option value="Residential">Residential</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Interiors">Interiors</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="form-error-msg">Please select a project type.</span>
+            </div>
+
+          </div>
+
+          <!-- 02 — Project Details -->
+          <p class="form-section-title">02 — Project Details</p>
+          <div class="form-grid">
+
+            <div class="form-field form-field--full" id="field-description">
+              <label for="inp-description">Short Description <span class="opt">*</span></label>
+              <textarea id="inp-description" name="description" placeholder="What do you want to build? (1–2 sentences)"
+                required></textarea>
+              <span class="form-error-msg">Please describe your project briefly.</span>
+            </div>
+
+            <div class="form-field form-field--half" id="field-budget">
+              <label for="inp-budget">Budget Range (BDT) <span class="opt">*</span></label>
+              <select id="inp-budget" name="budget" required>
+                <option value="" disabled selected>Select range…</option>
+                <option value="under-1M">Under ৳10,00,000</option>
+                <option value="1M-5M">৳10,00,000 – ৳50,00,000</option>
+                <option value="5M-20M">৳50,00,000 – ৳2,00,00,000</option>
+                <option value="over-20M">Over ৳2,00,00,000</option>
+                <option value="unsure">Unsure — Let's discuss</option>
+              </select>
+              <span class="form-error-msg">Please select a budget range.</span>
+            </div>
+
+            <div class="form-field form-field--half">
+              <label>Attachments <span class="opt">Optional — 1 file, max 10 MB</span></label>
+              <div class="file-upload" id="file-upload-zone">
+                <input type="file" id="inp-file" name="attachment" accept=".jpg,.jpeg,.png,.pdf,.dwg"
+                  aria-label="Upload a file" />
+                <svg class="file-upload__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                </svg>
+                <p class="file-upload__label" id="file-label">Upload photos or plans</p>
+                <p class="file-upload__sub">JPG, PNG, PDF, DWG</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Submit -->
+          <div class="form-cta">
+            <button type="submit" class="btn btn--primary" id="submit-btn">Get a Callback</button>
+            <p class="form-microcopy">
+              We'll contact you within 24–48 hours.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="inquire-sidebar reveal">
+
+        <div class="sidebar-block">
+          <p class="sidebar-block__label">Call Us</p>
+          <p class="sidebar-block__value">
+            <a href="tel:+8801XXXXXXXXX">+88 01XXXXXXXXX</a>
+          </p>
+          <p class="sidebar-hours label-caps">Mon – Fri, 09:00 – 18:00 BST (UTC+6)</p>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-block__label">Email</p>
+          <p class="sidebar-block__value">
+            <a href="mailto:whitedesignsolutions@gmail.com">whitedesignsolutions@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-block__label">What happens next?</p>
+          <p class="sidebar-block__value"
+            style="font-size:14px; color:var(--color-on-surface-variant); line-height:1.7;">
+            1. We review your brief within 24–48 hrs.<br />
+            2. A team member calls to confirm scope &amp; budget.<br />
+            3. We arrange a site visit or proposal meeting.
+          </p>
+        </div>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-block__label">Studio</p>
+          <p class="sidebar-block__value"
+            style="font-size:14px; color:var(--color-on-surface-variant); line-height:1.7;">
+            WHITE Design Solutions<br />
+            Dhaka, Bangladesh
+          </p>
+        </div>
+
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div>
+          <div class="footer__brand-title">WHITE</div>
+          <p class="footer__brand-text body-md">
+            Initiate a dialogue regarding your next architectural endeavor.
+          </p>
+          <a href="inquire.html" class="btn btn--primary">Contact Firm</a>
+        </div>
+        <p class="footer__copyright">&copy; 2024 WHITE Design Solutions. Built for Permanence.</p>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__column">
+          <h4 class="footer__column-title">Index</h4>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="projects.html#residential">Residences</a>
+          <a href="projects.html#interior">Interiors</a>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__column-title">Firm</h4>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__column-title">Information</h4>
+          <a href="#">Legal</a>
+          <a href="#">Sustainability</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // File upload label update
+      const fileInput = document.getElementById('inp-file');
+      const fileLabel = document.getElementById('file-label');
+      fileInput.addEventListener('change', () => {
+        fileLabel.textContent = fileInput.files[0]
+          ? fileInput.files[0].name
+          : 'Upload photos or plans';
+      });
+
+      // Form validation & submission
+      const form = document.getElementById('inquire-form');
+      const successPanel = document.getElementById('success-panel');
+      const successNameMsg = document.getElementById('success-name-msg');
+      const successBody = document.getElementById('success-body');
+
+      const requiredFields = [
+        { id: 'inp-name', wrapper: 'field-name', msg: 'Please enter your name.' },
+        { id: 'inp-email', wrapper: 'field-email', msg: 'Please enter a valid email.' },
+        { id: 'inp-type', wrapper: 'field-project-type', msg: 'Please select a project type.' },
+        { id: 'inp-description', wrapper: 'field-description', msg: 'Please describe your project briefly.' },
+        { id: 'inp-budget', wrapper: 'field-budget', msg: 'Please select a budget range.' },
+      ];
+
+      function validate() {
+        let valid = true;
+        requiredFields.forEach(f => {
+          const input = document.getElementById(f.id);
+          const wrapper = document.getElementById(f.wrapper);
+          const isEmpty = !input.value.trim();
+          const isInvalidEmail = f.id === 'inp-email' && input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+          const hasError = isEmpty || isInvalidEmail;
+          wrapper.classList.toggle('has-error', hasError);
+          input.classList.toggle('error', hasError);
+          if (hasError) valid = false;
+        });
+        return valid;
+      }
+
+      // Live clear errors
+      requiredFields.forEach(f => {
+        document.getElementById(f.id).addEventListener('input', () => {
+          const wrapper = document.getElementById(f.wrapper);
+          wrapper.classList.remove('has-error');
+          document.getElementById(f.id).classList.remove('error');
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!validate()) return;
+
+        const name = document.getElementById('inp-name').value.trim();
+        successNameMsg.textContent = `Thanks, ${name}!`;
+        successBody.innerHTML = `We received your request. Our team will contact you within 24–48 hours to schedule a free 15-minute call and discuss next steps. If urgent, call <strong>+88 01XXXXXXXXX</strong>.`;
+
+        form.style.display = 'none';
+        successPanel.classList.add('visible');
+        successPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

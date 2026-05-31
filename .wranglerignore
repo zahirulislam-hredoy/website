@@ -1,0 +1,12 @@
+node_modules
+.git
+.wrangler
+functions
+build.js
+init-projects.js
+package.json
+package-lock.json
+.gitignore
+.wranglerignore
+wrangler.jsonc
+wrangler.toml

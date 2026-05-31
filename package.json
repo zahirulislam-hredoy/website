@@ -1,0 +1,12 @@
+{
+  "name": "white-design-solutions-website",
+  "version": "1.0.0",
+  "description": "WHITE Design Solutions Portfolio Website",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

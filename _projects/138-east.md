@@ -1,5 +1,7 @@
 ---
 title: "138 EAST"
+category: "residential"
+featured: true
 client: "Private Developer"
 location: "Gulshan, Dhaka"
 year: "2024"

@@ -16,6 +16,8 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: [{label: "Residential", value: "residential"}, {label: "Interior Fitout", value: "interior"}] }
+      - { label: "Feature on Homepage", name: "featured", widget: "boolean", default: false }
       - { label: "Client Name", name: "client", widget: "string" }
       - { label: "Project Location", name: "location", widget: "string" }
       - { label: "Completion Year", name: "year", widget: "string" }

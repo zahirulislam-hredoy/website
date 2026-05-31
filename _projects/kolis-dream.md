@@ -1,5 +1,7 @@
 ---
 title: "Koli's Dream BY WHITE"
+category: "residential"
+featured: true
 client: "Private Client"
 location: "Dhaka, Bangladesh"
 year: "2024"
